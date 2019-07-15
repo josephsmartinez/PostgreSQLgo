@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  # Postgres
+  db:
+    container_name: postgres
+    image: postgres:9.6.8-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+# Volumes
+volumes:
+  postgres:
+    driver: local
